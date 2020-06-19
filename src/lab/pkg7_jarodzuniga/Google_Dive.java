@@ -24,8 +24,8 @@ public class Google_Dive extends javax.swing.JFrame {
     public Google_Dive() {
         initComponents();
 
-        ab=new administrarBarra(jProgressBar1);
-        guarda g=new guarda(this.jProgressBar1,jLabel9);
+        ab = new administrarBarra(jProgressBar1);
+        guarda g = new guarda(this.jProgressBar1, jLabel9);
         Thread proceso2 = new Thread(g);
         proceso2.start();
     }
@@ -60,6 +60,12 @@ public class Google_Dive extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         miunidad = new javax.swing.JFrame();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        jLabel10 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -152,16 +158,39 @@ public class Google_Dive extends javax.swing.JFrame {
         jLabel9.setText("avance");
         Agregar.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 40, -1, -1));
 
-        javax.swing.GroupLayout miunidadLayout = new javax.swing.GroupLayout(miunidad.getContentPane());
-        miunidad.getContentPane().setLayout(miunidadLayout);
-        miunidadLayout.setHorizontalGroup(
-            miunidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        miunidadLayout.setVerticalGroup(
-            miunidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        miunidad.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane2.setViewportView(jList2);
+
+        miunidad.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 101, 790, 400));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel10.setText("Mi unidad");
+        miunidad.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, -1));
+
+        jButton5.setText("Añadir a favoritos");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        miunidad.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 580, -1, -1));
+
+        jButton6.setText("Eliminar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        miunidad.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 580, -1, -1));
+
+        jButton7.setText("Salir");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        miunidad.getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 570, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -236,6 +265,21 @@ public class Google_Dive extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         miunidad.setVisible(true);
         this.setVisible(false);
+        //Crear un objeto DefaultListModel
+        DefaultListModel listModel = new DefaultListModel();
+        //Crear un objeto DefaultListModel
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < arr.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, arr.get(i));
+        }
+
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < car.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, car.get(i));
+        }
+        jList2.setModel(listModel);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -254,19 +298,19 @@ public class Google_Dive extends javax.swing.JFrame {
         jTextField3.setEnabled(false);
         jComboBox1.setEnabled(false);
         //Crear un objeto DefaultListModel
-            DefaultListModel listModel = new DefaultListModel();
-         //Crear un objeto DefaultListModel
+        DefaultListModel listModel = new DefaultListModel();
+        //Crear un objeto DefaultListModel
 //Recorrer el contenido del ArrayList
-            for (int i = 0; i < arr.size(); i++) {
-                //Añadir cada elemento del ArrayList en el modelo de la lista
-                listModel.add(i, arr.get(i));
-            }
+        for (int i = 0; i < arr.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, arr.get(i));
+        }
 //Recorrer el contenido del ArrayList
-            for (int i = 0; i < car.size(); i++) {
-                //Añadir cada elemento del ArrayList en el modelo de la lista
-                listModel.add(i, car.get(i));
-            }
-            jList1.setModel(listModel);
+        for (int i = 0; i < car.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, car.get(i));
+        }
+        jList1.setModel(listModel);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
@@ -289,9 +333,9 @@ public class Google_Dive extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       jProgressBar1.setValue(0);
-        int x=0;
-        while(x<=100000000){
+        jProgressBar1.setValue(0);
+        int x = 0;
+        while (x <= 100000000) {
             jProgressBar1.setValue(x);
             x++;
         }
@@ -299,11 +343,11 @@ public class Google_Dive extends javax.swing.JFrame {
         String link, nombre, extencion, link2 = "";
         int tamaño;
         String[] abecedario = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
-            "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z","a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+            "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
             "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
         link = "dive.google.com/";
-            int t;
-            System.out.println(abecedario[10]);
+        int t;
+        System.out.println(abecedario[10]);
         if (jComboBox2.getSelectedItem() == "Carpeta") {
             String nom2;
             nom2 = jTextField1.getText();
@@ -311,25 +355,24 @@ public class Google_Dive extends javax.swing.JFrame {
             for (int i = 0; link2.length() < 5; i++) {
                 char un = ' ', dos = ' ', tre = ' ';
                 if (link2.length() < 5) {
-                    t=0+rn.nextInt(62);
-                    link2 =link2+abecedario[t];
+                    t = 0 + rn.nextInt(62);
+                    link2 = link2 + abecedario[t];
                     System.out.println(abecedario[t]);
                 }
                 if (link2.length() < 5) {
-                    t=0+rn.nextInt(62);
-                    link2 =link2+abecedario[t];
+                    t = 0 + rn.nextInt(62);
+                    link2 = link2 + abecedario[t];
                     System.out.println(abecedario[t]);
                 }
                 if (link2.length() < 5) {
-                    t=0+rn.nextInt(62);
-                    link2 =link2+abecedario[t];
+                    t = 0 + rn.nextInt(62);
+                    link2 = link2 + abecedario[t];
                     System.out.println(abecedario[t]);
                 }
             }
             System.out.println("Aqui bien");
-                link =link+link2;
-                car.add(new Carpertas(nom2, link, crearcar));
-                
+            link = link + link2;
+            car.add(new Carpertas(nom2, link, crearcar));
 
         } else if (jComboBox2.getSelectedItem() == "Archivo") {
             nombre = jTextField3.getText();
@@ -339,41 +382,41 @@ public class Google_Dive extends javax.swing.JFrame {
             for (int i = 0; link2.length() < 10; i++) {
                 char un = ' ', dos = ' ', tre = ' ';
                 if (link2.length() < 10) {
-                     t=0+rn.nextInt(62);
-                    link2 +=abecedario[t];
+                    t = 0 + rn.nextInt(62);
+                    link2 += abecedario[t];
                 }
                 if (link2.length() < 10) {
-                    t=0+rn.nextInt(62);
-                    link2 +=abecedario[t];
+                    t = 0 + rn.nextInt(62);
+                    link2 += abecedario[t];
                 }
                 if (link2.length() < 10) {
-                    t=0+rn.nextInt(62);
-                   link2 +=abecedario[t];
+                    t = 0 + rn.nextInt(62);
+                    link2 += abecedario[t];
                 }
                 System.out.println(un + "    " + dos + "   " + tre);
 
             }
-           link =link+link2;
+            link = link + link2;
             arr.add(new Archivos(nombre, link, extencion, tamaño));
         }
         JOptionPane.showMessageDialog(this, "Agregado correctamente");
         crearcar.clear();
-         //Crear un objeto DefaultListModel
-            DefaultListModel listModel = new DefaultListModel();
-         //Crear un objeto DefaultListModel
+        //Crear un objeto DefaultListModel
+        DefaultListModel listModel = new DefaultListModel();
+        //Crear un objeto DefaultListModel
 //Recorrer el contenido del ArrayList
-            for (int i = 0; i < arr.size(); i++) {
-                //Añadir cada elemento del ArrayList en el modelo de la lista
-                listModel.add(i, arr.get(i));
-            }
-            
+        for (int i = 0; i < arr.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, arr.get(i));
+        }
+
 //Recorrer el contenido del ArrayList
-            for (int i = 0; i < car.size(); i++) {
-                //Añadir cada elemento del ArrayList en el modelo de la lista
-                listModel.add(i, car.get(i));
-            }
-            jList1.setModel(listModel);
-            
+        for (int i = 0; i < car.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, car.get(i));
+        }
+        jList1.setModel(listModel);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -394,8 +437,67 @@ public class Google_Dive extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         int c = jList1.getSelectedIndex();
-        crearcar.add(arr.get(c-car.size()));
+        crearcar.add(arr.get(c - car.size()));
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int c, a;
+        c = jList2.getSelectedIndex();
+        if (c > arr.size()) {
+            fav.add(car.get(c));
+            car.remove(c);
+        } else if (c < arr.size()) {
+            fav.add(arr.get(c));
+            arr.remove(c);
+        }
+        //Crear un objeto DefaultListModel
+        DefaultListModel listModel = new DefaultListModel();
+        //Crear un objeto DefaultListModel
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < arr.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, arr.get(i));
+        }
+
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < car.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, car.get(i));
+        }
+        jList2.setModel(listModel);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        miunidad .setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+         int c, a;
+        c = jList2.getSelectedIndex();
+        if (c > arr.size()) {
+            eliminado.add(car.get(c)+"Carpeta");
+            car.remove(c);
+        } else if (c < arr.size()) {
+            eliminado.add(arr.get(c)+"archivo");
+            arr.remove(c);
+        }
+        //Crear un objeto DefaultListModel
+        DefaultListModel listModel = new DefaultListModel();
+        //Crear un objeto DefaultListModel
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < arr.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, arr.get(i));
+        }
+
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < car.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, car.get(i));
+        }
+        jList2.setModel(listModel);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,9 +540,13 @@ public class Google_Dive extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -450,6 +556,7 @@ public class Google_Dive extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -460,6 +567,7 @@ public class Google_Dive extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
