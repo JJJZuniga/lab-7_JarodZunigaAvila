@@ -59,7 +59,7 @@ public class Archivos {
 
     @Override
     public String toString() {
-        return "nombre=" + nombre + ", linkar=" + linkar + ", exten=" + exten + ", tama\u00f1o=" + tamaño ;
+        return "nombre=" + nombre + ", linkar=" + linkar + ", exten=" + exten + ", tamaño=" + tamaño ;
     }
      
     
