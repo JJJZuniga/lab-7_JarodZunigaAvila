@@ -24,6 +24,9 @@ public class Google_Dive extends javax.swing.JFrame {
     public Google_Dive() {
         initComponents();
 
+        hd= new guardarnuev(jProgressBar1);
+        td= new guardarnuev(jProgressBar2);
+        
         ab = new administrarBarra(jProgressBar1);
         guarda g = new guarda(this.jProgressBar1, jLabel9);
         Thread proceso2 = new Thread(g);
@@ -66,6 +69,13 @@ public class Google_Dive extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jProgressBar2 = new javax.swing.JProgressBar();
+        jButton8 = new javax.swing.JButton();
+        destacados = new javax.swing.JFrame();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList3 = new javax.swing.JList<>();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -130,7 +140,7 @@ public class Google_Dive extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         Agregar.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 370, 310));
-        Agregar.getContentPane().add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 370, 30));
+        Agregar.getContentPane().add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, 370, 30));
 
         jLabel7.setText("Tipo");
         Agregar.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
@@ -174,7 +184,7 @@ public class Google_Dive extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        miunidad.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 580, -1, -1));
+        miunidad.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 560, -1, -1));
 
         jButton6.setText("Eliminar");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +192,7 @@ public class Google_Dive extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        miunidad.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 580, -1, -1));
+        miunidad.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 560, -1, -1));
 
         jButton7.setText("Salir");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +200,38 @@ public class Google_Dive extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        miunidad.getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 570, -1, -1));
+        miunidad.getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 560, -1, -1));
+        miunidad.getContentPane().add(jProgressBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 530, 530, -1));
+
+        jButton8.setText("Descargar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        miunidad.getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 560, -1, -1));
+
+        destacados.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane3.setViewportView(jList3);
+
+        destacados.getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 924, 472));
+
+        jButton9.setText("Salir");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        destacados.getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 600, -1, -1));
+
+        jButton10.setText("Eliminar");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        destacados.getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 600, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -213,6 +254,11 @@ public class Google_Dive extends javax.swing.JFrame {
         jMenu1.add(jMenuItem4);
 
         jMenuItem3.setText("Destacado");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuItem1.setText("Papelera");
@@ -334,11 +380,8 @@ public class Google_Dive extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         jProgressBar1.setValue(0);
-        int x = 0;
-        while (x <= 100000000) {
-            jProgressBar1.setValue(x);
-            x++;
-        }
+        hd.start();
+        hd.setAvanzar(true);
         Random rn = new Random();
         String link, nombre, extencion, link2 = "";
         int tamaño;
@@ -416,6 +459,7 @@ public class Google_Dive extends javax.swing.JFrame {
             listModel.add(i, car.get(i));
         }
         jList1.setModel(listModel);
+        jProgressBar1.setValue(0);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -441,6 +485,10 @@ public class Google_Dive extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
+        jProgressBar2.setValue(0);
+        td.start();
+        td.setAvanzar(true);
         int c, a;
         c = jList2.getSelectedIndex();
         if (c > arr.size()) {
@@ -450,6 +498,7 @@ public class Google_Dive extends javax.swing.JFrame {
             fav.add(arr.get(c));
             arr.remove(c);
         }
+        JOptionPane.showMessageDialog(this,"Agregado a favorito exitosamente");
         //Crear un objeto DefaultListModel
         DefaultListModel listModel = new DefaultListModel();
         //Crear un objeto DefaultListModel
@@ -468,18 +517,18 @@ public class Google_Dive extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        miunidad .setVisible(false);
+        miunidad.setVisible(false);
         this.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-         int c, a;
+        int c, a;
         c = jList2.getSelectedIndex();
         if (c > arr.size()) {
-            eliminado.add(car.get(c)+"Carpeta");
+            eliminado.add(car.get(c) + "Carpeta");
             car.remove(c);
         } else if (c < arr.size()) {
-            eliminado.add(arr.get(c)+"archivo");
+            eliminado.add(arr.get(c) + "archivo");
             arr.remove(c);
         }
         //Crear un objeto DefaultListModel
@@ -498,6 +547,63 @@ public class Google_Dive extends javax.swing.JFrame {
         }
         jList2.setModel(listModel);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        destacados.setVisible(false);
+        this.setVisible(true);
+        
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        this.setVisible(false);
+        destacados.setVisible(true);
+         //Crear un objeto DefaultListModel
+        DefaultListModel listModel = new DefaultListModel();
+        //Crear un objeto DefaultListModel
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < arr.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, arr.get(i));
+        }
+
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < car.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, car.get(i));
+        }
+        jList3.setModel(listModel);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        int c, a;
+        c = jList3.getSelectedIndex();
+        if (c > arr.size()) {
+            eliminado.add(car.get(c) + "Carpeta");
+            fav.remove(c);
+        } else if (c < arr.size()) {
+            eliminado.add(arr.get(c) + "archivo");
+            fav.remove(c);
+        }
+        //Crear un objeto DefaultListModel
+        DefaultListModel listModel = new DefaultListModel();
+        //Crear un objeto DefaultListModel
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < arr.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, arr.get(i));
+        }
+
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < car.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, car.get(i));
+        }
+        jList3.setModel(listModel);
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -536,13 +642,17 @@ public class Google_Dive extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame Agregar;
+    private javax.swing.JFrame destacados;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -557,6 +667,7 @@ public class Google_Dive extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
+    private javax.swing.JList<String> jList3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -566,8 +677,10 @@ public class Google_Dive extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
@@ -579,5 +692,6 @@ public class Google_Dive extends javax.swing.JFrame {
     ArrayList eliminado = new ArrayList();
     ArrayList crearcar = new ArrayList();
     administrarBarra ab;
-
+    guardarnuev hd;
+    guardarnuev td;
 }
