@@ -27,10 +27,7 @@ public class Google_Dive extends javax.swing.JFrame {
         hd= new guardarnuev(jProgressBar1);
         td= new guardarnuev(jProgressBar2);
         
-        ab = new administrarBarra(jProgressBar1);
-        guarda g = new guarda(this.jProgressBar1, jLabel9);
-        Thread proceso2 = new Thread(g);
-        proceso2.start();
+      
     }
 
     /**
@@ -76,6 +73,13 @@ public class Google_Dive extends javax.swing.JFrame {
         jList3 = new javax.swing.JList<>();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        papelera = new javax.swing.JFrame();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jList4 = new javax.swing.JList<>();
+        jLabel11 = new javax.swing.JLabel();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -233,6 +237,40 @@ public class Google_Dive extends javax.swing.JFrame {
         });
         destacados.getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 600, -1, -1));
 
+        papelera.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane4.setViewportView(jList4);
+
+        papelera.getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 816, 514));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel11.setText("Papelera");
+        papelera.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(362, 45, -1, -1));
+
+        jButton11.setText("Eliminar");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        papelera.getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 670, -1, -1));
+
+        jButton12.setText("Restaurar");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        papelera.getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 670, -1, -1));
+
+        jButton13.setText("Salir");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        papelera.getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 670, -1, -1));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -301,7 +339,17 @@ public class Google_Dive extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+      this.setVisible(false);
+      papelera.setVisible(true);
+       //Crear un objeto DefaultListModel
+        DefaultListModel listModel = new DefaultListModel();
+       
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < eliminado.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, eliminado.get(i));
+        }
+        jList4.setModel(listModel);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -525,10 +573,10 @@ public class Google_Dive extends javax.swing.JFrame {
         int c, a;
         c = jList2.getSelectedIndex();
         if (c > arr.size()) {
-            eliminado.add(car.get(c) + "Carpeta");
+            eliminado.add(car.get(c) );
             car.remove(c);
         } else if (c < arr.size()) {
-            eliminado.add(arr.get(c) + "archivo");
+            eliminado.add(arr.get(c));
             arr.remove(c);
         }
         //Crear un objeto DefaultListModel
@@ -549,7 +597,7 @@ public class Google_Dive extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        
+            
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -605,6 +653,32 @@ public class Google_Dive extends javax.swing.JFrame {
         jList3.setModel(listModel);
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+       this.setVisible(true);
+       papelera.setVisible(false);
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        int y=jList4.getSelectedIndex();
+        papelera.remove(y);
+        //Crear un objeto DefaultListModel
+        DefaultListModel listModel = new DefaultListModel();
+       
+//Recorrer el contenido del ArrayList
+        for (int i = 0; i < eliminado.size(); i++) {
+            //Añadir cada elemento del ArrayList en el modelo de la lista
+            listModel.add(i, eliminado.get(i));
+        }
+        jList4.setModel(listModel);
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        int y=jList4.getSelectedIndex();
+        arr.add(eliminado.get(y));
+        car.add(eliminado.get(y));
+        papelera.remove(y);
+    }//GEN-LAST:event_jButton12ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -645,6 +719,9 @@ public class Google_Dive extends javax.swing.JFrame {
     private javax.swing.JFrame destacados;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -657,6 +734,7 @@ public class Google_Dive extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -668,6 +746,7 @@ public class Google_Dive extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JList<String> jList3;
+    private javax.swing.JList<String> jList4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -681,13 +760,15 @@ public class Google_Dive extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JFrame miunidad;
+    private javax.swing.JFrame papelera;
     // End of variables declaration//GEN-END:variables
-    ArrayList<Archivos> arr = new ArrayList();
-    ArrayList<Carpertas> car = new ArrayList();
+    ArrayList arr = new ArrayList();
+    ArrayList car = new ArrayList();
     ArrayList fav = new ArrayList();
     ArrayList eliminado = new ArrayList();
     ArrayList crearcar = new ArrayList();
